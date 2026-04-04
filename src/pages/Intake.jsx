@@ -111,8 +111,8 @@ function AssistantMessage({ text, isLatest }) {
 
   return (
     <div className="flex items-start gap-3 max-w-[85%]">
-      <div className="w-7 h-7 rounded-sm bg-primary flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
-        <span className="text-primary-foreground font-black text-xs leading-none" style={{ fontFamily: "'PP Neue Montreal Arabic Medium', system-ui, sans-serif" }}>A</span>
+      <div className="w-7 h-7 rounded-sm bg-secondary flex items-end justify-center flex-shrink-0 mt-0.5 shadow-sm overflow-hidden">
+        <img src="/avatar.png" alt="Alexander" className="w-full h-full object-contain object-bottom" />
       </div>
       <div className="bg-card rounded-xl rounded-tl-sm px-4 py-3 border border-white/5 shadow-sm">
         <p className="text-sm text-card-foreground/85 leading-relaxed">
@@ -140,8 +140,8 @@ function UserMessage({ text, initial }) {
 function ThinkingIndicator() {
   return (
     <div className="flex items-start gap-3 max-w-[85%]">
-      <div className="w-7 h-7 rounded-sm bg-primary flex items-center justify-center flex-shrink-0 shadow-sm">
-        <span className="text-primary-foreground font-black text-xs leading-none" style={{ fontFamily: "'PP Neue Montreal Arabic Medium', system-ui, sans-serif" }}>A</span>
+      <div className="w-7 h-7 rounded-sm bg-secondary flex items-end justify-center flex-shrink-0 shadow-sm overflow-hidden">
+        <img src="/avatar.png" alt="Alexander" className="w-full h-full object-contain object-bottom" />
       </div>
       <div className="bg-card rounded-xl rounded-tl-sm px-4 py-3.5 border border-white/5 shadow-sm">
         <div className="flex items-center gap-1.5">
@@ -171,8 +171,8 @@ function SelectionArtifact({ types }) {
   if (!types || types.length === 0) return null;
   return (
     <div className="flex items-start gap-3 max-w-[92%]">
-      <div className="w-7 h-7 rounded-sm bg-primary flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
-        <span className="text-primary-foreground font-black text-xs leading-none" style={{ fontFamily: "'PP Neue Montreal Arabic Medium', system-ui, sans-serif" }}>A</span>
+      <div className="w-7 h-7 rounded-sm bg-secondary flex items-end justify-center flex-shrink-0 mt-0.5 shadow-sm overflow-hidden">
+        <img src="/avatar.png" alt="Alexander" className="w-full h-full object-contain object-bottom" />
       </div>
       <div className="bg-card rounded-xl rounded-tl-sm px-4 py-3 border border-white/5 shadow-sm">
         <p className="text-xs text-card-foreground/50 mb-2.5 font-mono uppercase tracking-widest">Areas of interest</p>

@@ -492,8 +492,8 @@ function useScramble(target, active) {
     hasScrambled.current = true;
 
     let frame = 0;
-    const TOTAL    = 18;
-    const INTERVAL = 75; // ms — readable but snappy
+    const TOTAL    = 24;
+    const INTERVAL = 130; // ms — legible, unhurried
 
     const tick = () => {
       frame++;
