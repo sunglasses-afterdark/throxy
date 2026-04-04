@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Send, RotateCcw, Check } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 // ─── Typewriter hook ──────────────────────────────────────────────────────────
 function useTypewriter(text, speed = 18, enabled = true) {
@@ -228,6 +229,30 @@ function SummaryCard({ context }) {
   );
 }
 
+// ─── EmailJS submission ───────────────────────────────────────────────────────
+async function sendBriefEmail(context) {
+  const serviceId  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  if (!serviceId || !templateId || !publicKey) return;
+
+  const typeList = formatTypeList(context.types);
+  await emailjs.send(
+    serviceId,
+    templateId,
+    {
+      from_name:    context.name    || "Anonymous",
+      from_email:   context.email   || "—",
+      areas:        typeList        || "Not specified",
+      problem:      context.problem || "—",
+      systems:      context.systems || "—",
+      outcome:      context.outcome || "—",
+      timeline:     context.timeline|| "—",
+    },
+    publicKey,
+  );
+}
+
 // ─── Main component ───────────────────────────────────────────────────────────
 const FIELDS = ["name", "problem", "systems", "outcome", "timeline", "email"];
 
@@ -299,6 +324,7 @@ export default function Intake() {
       setThinking(false);
       const closingText = `You're all set, ${newContext.name || "there"}. Alexander has your brief and will follow up at ${text} within 24 hours. You can also reach him directly at alexander@alexblackwood.xyz.`;
       setMessages((prev) => [...prev, { role: "assistant", text: closingText }]);
+      sendBriefEmail(newContext).catch(() => {}); // fire-and-forget
       setDone(true);
       return;
     }
@@ -380,7 +406,7 @@ export default function Intake() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="neuo-dark rounded-2xl overflow-hidden"
+          className="bg-secondary neuo-dark rounded-2xl overflow-hidden"
         >
           {/* Chat messages */}
           <div
