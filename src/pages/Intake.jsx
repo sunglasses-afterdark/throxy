@@ -205,7 +205,7 @@ function SelectionArtifact({ types }) {
 // ─── Summary card ─────────────────────────────────────────────────────────────
 function SummaryCard({ context }) {
   return (
-    <div className="neuo-dark rounded-xl p-6 space-y-4">
+    <div className="bg-secondary neuo-dark rounded-xl p-6 space-y-4">
       <div className="flex items-center gap-2 mb-5">
         <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
           <Check className="w-3 h-3 text-primary" />
@@ -324,7 +324,7 @@ export default function Intake() {
       setThinking(false);
       const closingText = `You're all set, ${newContext.name || "there"}. Alexander has your brief and will follow up at ${text} within 24 hours. You can also reach him directly at alexander@alexblackwood.xyz.`;
       setMessages((prev) => [...prev, { role: "assistant", text: closingText }]);
-      sendBriefEmail(newContext).catch(() => {}); // fire-and-forget
+      sendBriefEmail(newContext).catch((err) => console.error("[EmailJS]", err)); // fire-and-forget
       setDone(true);
       return;
     }
