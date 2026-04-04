@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu, ArrowRight } from "lucide-react";
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="sticky top-0 z-50 bg-background/75 backdrop-blur-md py-3">
       <div className="max-w-7xl mx-auto px-5">
@@ -52,7 +56,7 @@ export default function Header() {
               <ArrowRight className="w-3 h-3" />
             </Link>
 
-            <Sheet>
+            <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
               <SheetTrigger asChild className="sm:hidden">
                 <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full hover:bg-muted neuo-sm">
                   <Menu className="h-4 w-4 text-foreground" />
@@ -60,12 +64,12 @@ export default function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="bg-background border-l border-border w-[300px]">
                 <nav className="flex flex-col gap-5 mt-12">
-                  <Link to="/" className="text-lg font-medium text-foreground hover:text-primary transition-colors">Home</Link>
-                  <Link to="/services" className="text-lg font-medium text-foreground hover:text-primary transition-colors">Services</Link>
-                  <Link to="/about" className="text-lg font-medium text-foreground hover:text-primary transition-colors">About</Link>
-                  <a href="mailto:alexander@alexblackwood.xyz" className="text-lg font-medium text-foreground hover:text-primary transition-colors">Contact</a>
+                  <Link to="/" onClick={closeMenu} className="text-lg font-medium text-foreground hover:text-primary transition-colors">Home</Link>
+                  <Link to="/services" onClick={closeMenu} className="text-lg font-medium text-foreground hover:text-primary transition-colors">Services</Link>
+                  <Link to="/about" onClick={closeMenu} className="text-lg font-medium text-foreground hover:text-primary transition-colors">About</Link>
+                  <a href="mailto:alexander@alexblackwood.xyz" onClick={closeMenu} className="text-lg font-medium text-foreground hover:text-primary transition-colors">Contact</a>
                   <div className="h-px bg-border my-2" />
-                  <Link to="/intake"
+                  <Link to="/intake" onClick={closeMenu}
                     className="inline-flex items-center justify-center gap-2 bg-foreground text-background text-base font-semibold px-6 py-4 rounded-full btn-neuo hover:bg-foreground/90 transition-all active:scale-95">
                     Start a Project
                     <ArrowRight className="w-4 h-4" />

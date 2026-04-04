@@ -797,9 +797,24 @@ function ServicesSection() {
   const [baton, setBaton] = useState({ left: 0, width: 0, ready: false });
 
   // Measure active tab synchronously before paint so baton never flashes at (0,0)
+  // Also scroll the active tab into view within the overflow container
   useLayoutEffect(() => {
     const btn = tabRefs.current[active];
-    if (btn) setBaton({ left: btn.offsetLeft, width: btn.offsetWidth, ready: true });
+    const container = containerRef.current;
+    if (btn) {
+      setBaton({ left: btn.offsetLeft, width: btn.offsetWidth, ready: true });
+      if (container) {
+        const btnLeft = btn.offsetLeft;
+        const btnRight = btnLeft + btn.offsetWidth;
+        const cLeft = container.scrollLeft;
+        const cRight = cLeft + container.offsetWidth;
+        if (btnRight > cRight) {
+          container.scrollTo({ left: btnRight - container.offsetWidth + 24, behavior: 'smooth' });
+        } else if (btnLeft < cLeft) {
+          container.scrollTo({ left: btnLeft - 24, behavior: 'smooth' });
+        }
+      }
+    }
   }, [active]);
 
   const prev = () => setActive(i => Math.max(0, i - 1));

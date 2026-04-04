@@ -367,7 +367,7 @@ export default function Intake() {
 
   return (
     <div className="bg-background min-h-screen">
-      <div className="max-w-3xl mx-auto px-4 py-12 sm:py-16">
+      <div className="max-w-3xl mx-auto px-4 py-4 sm:py-12">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -383,8 +383,8 @@ export default function Intake() {
               </button>
             )}
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">Tell me about your project.</h1>
-          <p className="text-sm text-muted-foreground">Takes 2 minutes. Alexander reviews every brief personally and responds within 24 hours.</p>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2">Tell me about your project.</h1>
+          <p className="text-sm text-muted-foreground hidden sm:block">Takes 2 minutes. Alexander reviews every brief personally and responds within 24 hours.</p>
 
           {/* Progress bar */}
           <div className="mt-5 h-1 bg-border rounded-full overflow-hidden">
@@ -411,7 +411,7 @@ export default function Intake() {
           {/* Chat messages */}
           <div
             ref={scrollRef}
-            className="h-[420px] overflow-y-auto p-5 space-y-4 scrollbar-hide"
+            className="h-[45vh] min-h-[260px] sm:h-[420px] overflow-y-auto p-4 sm:p-5 space-y-4 scrollbar-hide"
           >
             {/* Selection artifact — shown once at top if types were pre-selected */}
             {initialTypes.length > 0 && (
@@ -458,8 +458,8 @@ export default function Intake() {
                   placeholder={step === FIELDS.length - 1 ? "your@email.com" : "Type your response..."}
                   rows={1}
                   disabled={thinking}
-                  className="flex-1 bg-secondary-foreground/5 text-secondary-foreground placeholder-secondary-foreground/30 text-sm rounded-xl px-4 py-3 border border-secondary-foreground/10 focus:outline-none focus:border-primary/50 focus:bg-secondary-foreground/7 resize-none transition-all disabled:opacity-40"
-                  style={{ minHeight: "44px", maxHeight: "120px" }}
+                  className="flex-1 bg-secondary-foreground/5 text-secondary-foreground placeholder-secondary-foreground/30 rounded-xl px-4 py-3 border border-secondary-foreground/10 focus:outline-none focus:border-primary/50 focus:bg-secondary-foreground/7 resize-none transition-all disabled:opacity-40"
+                  style={{ minHeight: "44px", maxHeight: "120px", fontSize: "16px" }}
                   onInput={(e) => {
                     e.target.style.height = "auto";
                     e.target.style.height = Math.min(e.target.scrollHeight, 120) + "px";
@@ -473,7 +473,7 @@ export default function Intake() {
                   <Send className="w-4 h-4 text-primary-foreground" />
                 </button>
               </div>
-              <p className="text-xs text-secondary-foreground/25 mt-2 ml-1">Press Enter to send · Shift+Enter for newline</p>
+              <p className="text-xs text-secondary-foreground/25 mt-2 ml-1 hidden sm:block">Press Enter to send · Shift+Enter for newline</p>
             </div>
           ) : (
             <div className="border-t border-white/6 p-5">
