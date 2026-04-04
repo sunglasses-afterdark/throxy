@@ -11,17 +11,17 @@
 @layer base {
   :root {
 
-    --accent: 132 100% 87.3%;
+    --accent: 168 68% 52%;
 
-    --accent-foreground: 222.2 84% 4.9%;
+    --accent-foreground: 0 0% 0%;
 
     --background: 45 22.2% 96.5%;
 
     --border: 0 0% 81.6%;
 
-    --card: 0 0% 15.7%;
+    --card: 218 28% 10%;
 
-    --card-foreground: 210 40% 98%;
+    --card-foreground: 210 40% 96%;
 
     --destructive: 0 84.2% 60.2%;
 
@@ -43,17 +43,17 @@
 
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 257.5 100% 87.3%;
+    --primary: 225 78% 62%;
 
-    --primary-foreground: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
 
     --radius: 0.19rem;
 
-    --ring: 257.5 100% 87.3%;
+    --ring: 225 78% 62%;
 
-    --secondary: 0 0% 0%;
+    --secondary: 218 28% 8%;
 
-    --secondary-foreground: 210 40% 98%;
+    --secondary-foreground: 210 35% 94%;
 
   }
 }
@@ -108,14 +108,27 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading) !important; }
   100% { transform: translateX(0px); }
 }
 
-@keyframes __framer-loading-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes typing-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
 }
 
 .animate-gradient-x {
   animation: gradient-x 6s ease infinite;
   background-size: 200% auto;
+}
+
+.animate-typing-cursor {
+  animation: typing-cursor 1s ease-in-out infinite;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 1.5s ease-in-out infinite;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -129,4 +142,147 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading) !important; }
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Neumorphic utilities ───────────────────────────────────────────────────
+   Light background (cream ~hsl(45 22% 97%)):
+     shadow-dark  ≈ rgba(175,162,143,0.30)
+     shadow-light ≈ rgba(255,255,255,0.90)
+   Dark background (navy ~hsl(218 28% 8%)):
+     shadow-dark  ≈ rgba(0,0,0,0.50)
+     shadow-light ≈ rgba(255,255,255,0.06)
+──────────────────────────────────────────────────────────────────────────── */
+
+/* Raised card on light bg */
+.neuo {
+  box-shadow:
+    7px 7px 18px rgba(175, 162, 143, 0.32),
+    -5px -5px 14px rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.68);
+}
+.neuo:hover {
+  box-shadow:
+    10px 10px 24px rgba(175, 162, 143, 0.38),
+    -7px -7px 18px rgba(255, 255, 255, 0.96);
+}
+
+/* Small raised pill — for nav items nested inside outer nav pill */
+.neuo-sm {
+  box-shadow:
+    2px 2px 6px rgba(175, 162, 143, 0.22),
+    -2px -2px 5px rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  transition: box-shadow 0.18s ease, color 0.18s ease;
+}
+.neuo-sm:hover {
+  box-shadow:
+    inset 2px 2px 5px rgba(175, 162, 143, 0.18),
+    inset -1px -1px 4px rgba(255, 255, 255, 0.68);
+}
+
+/* Raised card on dark bg */
+.neuo-dark {
+  box-shadow:
+    6px 6px 16px rgba(0, 0, 0, 0.50),
+    -3px -3px 8px rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.neuo-dark:hover {
+  box-shadow:
+    8px 8px 20px rgba(0, 0, 0, 0.55),
+    -4px -4px 10px rgba(255, 255, 255, 0.07);
+}
+
+/* Floating nav pill on light bg */
+.neuo-nav {
+  background: hsl(45 22% 96%);
+  box-shadow:
+    6px 6px 18px rgba(175, 162, 143, 0.28),
+    -5px -5px 14px rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+}
+
+/*
+  All neumorphic elements use the same shadow colour pair as the nav:
+  dark:  rgba(175, 162, 143, …)  — warm tan, derivative of cream bg
+  light: rgba(255, 255, 255, …)  — pure white highlight
+  Offset:blur ratio kept at ~1:2.5 to match nav feel.
+  Dark-bg elements use rgba(0,0,0,…) / rgba(255,255,255, small) — same as .neuo-dark.
+*/
+
+/* Button — dark pill on cream bg — same weight as .neuo */
+.btn-neuo {
+  border: 1px solid rgba(255, 255, 255, 0.68) !important;
+  box-shadow:
+    6px 6px 16px rgba(175, 162, 143, 0.32),
+    -5px -5px 12px rgba(255, 255, 255, 0.92);
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+.btn-neuo:hover {
+  box-shadow:
+    8px 8px 20px rgba(175, 162, 143, 0.38),
+    -6px -6px 15px rgba(255, 255, 255, 0.96);
+}
+.btn-neuo:active {
+  border-color: rgba(255, 255, 255, 0.50) !important;
+  box-shadow:
+    inset 3px 3px 8px rgba(175, 162, 143, 0.28),
+    inset -2px -2px 6px rgba(255, 255, 255, 0.72);
+  transform: translateY(0) !important;
+}
+
+/* Button — primary blue pill, sits on dark secondary bg — mirrors .neuo-dark weight */
+.btn-neuo-primary {
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow:
+    6px 6px 16px rgba(0, 0, 0, 0.52),
+    -4px -4px 10px rgba(255, 255, 255, 0.06);
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+.btn-neuo-primary:hover {
+  box-shadow:
+    8px 8px 20px rgba(0, 0, 0, 0.58),
+    -5px -5px 12px rgba(255, 255, 255, 0.08);
+}
+.btn-neuo-primary:active {
+  border-color: rgba(255, 255, 255, 0.04) !important;
+  box-shadow:
+    inset 3px 3px 8px rgba(0, 0, 0, 0.48),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.05);
+  transform: translateY(0) !important;
+}
+
+/* Button — on bg-primary blue section (About CTA) — mirrors .neuo-dark weight */
+.btn-neuo-dark {
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow:
+    6px 6px 16px rgba(0, 0, 0, 0.50),
+    -4px -4px 10px rgba(255, 255, 255, 0.07);
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+.btn-neuo-dark:hover {
+  box-shadow:
+    8px 8px 20px rgba(0, 0, 0, 0.56),
+    -5px -5px 12px rgba(255, 255, 255, 0.09);
+}
+.btn-neuo-dark:active {
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  box-shadow:
+    inset 3px 3px 8px rgba(0, 0, 0, 0.46),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.06);
+  transform: translateY(0) !important;
+}
+
+/* Service cards — on cream bg — same shadow pair as .neuo, slightly heavier */
+.neuo-card {
+  box-shadow:
+    7px 7px 18px rgba(175, 162, 143, 0.32),
+    -5px -5px 14px rgba(255, 255, 255, 0.92);
+}
+
+/* Real-examples sub-cards — on dark card bg — same pair as .neuo-dark, smaller */
+.neuo-card-inner {
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.48),
+    -3px -3px 7px rgba(255, 255, 255, 0.05);
 }

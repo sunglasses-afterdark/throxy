@@ -1,71 +1,57 @@
 import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="bg-secondary text-secondary-foreground">
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-10 mb-14">
           {/* Logo + description */}
-          <div className="col-span-2">
-            <Link to="/" className="inline-block mb-4">
-              <img
-                src="https://media.base44.com/images/public/69cdf02cda99287bd2ab8650/d86bb56ea_framerusercontent_com_cqIDj9sk1fQiszAbKgUfv8ZmJxE_37a4524c.png"
-                alt="throxy"
-                className="h-7 w-auto object-contain"
-                onError={(e) => {
-                  e.target.style.display = "none";
-                  e.target.nextElementSibling.style.display = "inline";
-                }}
-              />
-              <span className="font-bold text-lg text-secondary-foreground" style={{ display: "none" }}>throxy</span>
+          <div className="sm:col-span-2">
+            <Link to="/" className="inline-flex items-center gap-2.5 mb-5">
+              <div className="w-8 h-8 flex items-end justify-center overflow-hidden">
+                <img src="/avatar.png" alt="Alexander Blackwood" className="w-full h-full object-contain object-bottom" />
+              </div>
+              <span className="font-bold text-lg text-secondary-foreground" style={{ fontFamily: "'PP Neue Montreal Arabic Medium', system-ui, sans-serif" }}>Alexander</span>
             </Link>
-            <p className="text-xs text-secondary-foreground/40 leading-relaxed max-w-xs">
-              The outbound partner built for hard-to-crack traditional industries. Powered by proprietary technology and managed by experts.
+            <p className="text-sm text-secondary-foreground/55 leading-relaxed max-w-xs mb-6">
+              GTM engineering consultancy. Data integrations, automations, AI solutions, and custom software — scoped, built, and delivered by a senior engineer. No agency overhead. No handoffs.
             </p>
+            <a href="mailto:alexander@alexblackwood.xyz" className="inline-flex items-center gap-1.5 text-sm text-secondary-foreground/55 hover:text-secondary-foreground transition-colors">
+              alexander@alexblackwood.xyz
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          {/* Work */}
+          <div>
+            <p className="text-sm font-semibold text-secondary-foreground uppercase tracking-widest mb-4">Work</p>
+            <div className="space-y-3">
+              <div><Link to="/services" className="text-sm text-secondary-foreground/55 hover:text-secondary-foreground transition-colors">All Services</Link></div>
+              <div><Link to="/services#ai" className="text-sm text-secondary-foreground/55 hover:text-secondary-foreground transition-colors">AI & MCP Systems</Link></div>
+              <div><Link to="/services#integrations" className="text-sm text-secondary-foreground/55 hover:text-secondary-foreground transition-colors">Data Integrations</Link></div>
+              <div><Link to="/services#automation" className="text-sm text-secondary-foreground/55 hover:text-secondary-foreground transition-colors">Automation</Link></div>
+              <div><Link to="/services#fractional" className="text-sm text-secondary-foreground/55 hover:text-secondary-foreground transition-colors">Fractional CTO</Link></div>
+            </div>
           </div>
 
           {/* Company */}
           <div>
-            <p className="text-xs font-semibold text-secondary-foreground uppercase tracking-widest mb-4">Company</p>
-            <div className="space-y-2.5">
-              <div><Link to="/" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">Home</Link></div>
-              <div><Link to="/AboutUs" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">About Us</Link></div>
-              <div><a href="https://careers.throxy.com/" target="_blank" rel="noopener noreferrer" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">Careers</a></div>
-            </div>
-          </div>
-
-          {/* Solutions */}
-          <div>
-            <p className="text-xs font-semibold text-secondary-foreground uppercase tracking-widest mb-4">Solutions</p>
-            <div className="space-y-2.5">
-              <div><Link to="/Solutions" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">Lead Finding and Qualification</Link></div>
-              <div><a href="#" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">Cold Calling</a></div>
-              <div><a href="#" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">Messaging</a></div>
-              <div><a href="#" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">Deliverability</a></div>
-              <div><a href="#" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">Closed Loop Optimisation</a></div>
-              <div><a href="#" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">Done For You</a></div>
-            </div>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <p className="text-xs font-semibold text-secondary-foreground uppercase tracking-widest mb-4">Resources</p>
-            <div className="space-y-2.5">
-              <div><a href="#" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">Blog</a></div>
-              <div><a href="#" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">Tools</a></div>
-              <div><a href="#" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">Glossary</a></div>
-              <div><a href="https://careers.throxy.com/" target="_blank" rel="noopener noreferrer" className="text-xs text-secondary-foreground/50 hover:text-secondary-foreground transition-colors">Jobs</a></div>
+            <p className="text-sm font-semibold text-secondary-foreground uppercase tracking-widest mb-4">Company</p>
+            <div className="space-y-3">
+              <div><Link to="/about" className="text-sm text-secondary-foreground/55 hover:text-secondary-foreground transition-colors">About Alexander</Link></div>
+              <div><Link to="/intake" className="text-sm text-secondary-foreground/55 hover:text-secondary-foreground transition-colors">Start a Project</Link></div>
+              <div><a href="mailto:alexander@alexblackwood.xyz" className="text-sm text-secondary-foreground/55 hover:text-secondary-foreground transition-colors">Contact</a></div>
             </div>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="border-t border-secondary-foreground/10 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <p className="text-xs text-secondary-foreground/30">© 2025 Throxy. All rights reserved.</p>
+          <p className="text-sm text-secondary-foreground/35">© {new Date().getFullYear()} Alexander Blackwood. All rights reserved.</p>
           <div className="flex items-center gap-5">
-            <a href="#" className="text-xs text-secondary-foreground/30 hover:text-secondary-foreground/60 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-xs text-secondary-foreground/30 hover:text-secondary-foreground/60 transition-colors">Terms of Service</a>
-            <button className="text-xs text-secondary-foreground/30 hover:text-secondary-foreground/60 transition-colors">Cookie Settings</button>
+            <a href="mailto:alexander@alexblackwood.xyz" className="text-sm text-secondary-foreground/35 hover:text-secondary-foreground/65 transition-colors">alexander@alexblackwood.xyz</a>
+            <span className="text-sm text-secondary-foreground/25">Delray Beach, FL</span>
           </div>
         </div>
       </div>
