@@ -213,14 +213,14 @@ function CaseStudyCard({ cs, delay = 0 }) {
 
         {/* Visual top panel */}
         <div
-          className="relative flex flex-col items-center justify-center gap-5 px-10 pt-12 pb-10"
+          className="relative flex flex-col items-center justify-center gap-5 px-6 sm:px-10 pt-8 sm:pt-12 pb-8 sm:pb-10"
           style={{ background: `linear-gradient(160deg, ${cs.accentFrom}, ${cs.accentTo})` }}
         >
           {/* Consultant + client row */}
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-4 sm:gap-8">
             {/* Alexander avatar */}
             <div className="flex flex-col items-center gap-2">
-              <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white/80 bg-background"
+              <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white/80 bg-background"
                 style={{ boxShadow: "4px 4px 12px rgba(175,162,143,0.35), -3px -3px 8px rgba(255,255,255,0.95)" }}>
                 <img src="/avatar.png" alt="Alexander" className="w-full h-full object-cover object-top scale-110" />
               </div>
@@ -229,7 +229,7 @@ function CaseStudyCard({ cs, delay = 0 }) {
 
             {/* Center icon */}
             <div
-              className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0"
+              className="w-11 h-11 sm:w-16 sm:h-16 rounded-full flex items-center justify-center flex-shrink-0"
               style={{ background: cs.iconBg, boxShadow: "4px 4px 12px rgba(0,0,0,0.25), -3px -3px 8px rgba(255,255,255,0.40)" }}
             >
               <Icon className="w-7 h-7 text-white" />
@@ -237,7 +237,7 @@ function CaseStudyCard({ cs, delay = 0 }) {
 
             {/* Company badge */}
             <div className="flex flex-col items-center gap-2">
-              <div className="w-20 h-20 rounded-full border-2 border-white/80 flex items-center justify-center bg-white"
+              <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full border-2 border-white/80 flex items-center justify-center bg-white"
                 style={{ boxShadow: "4px 4px 12px rgba(175,162,143,0.35), -3px -3px 8px rgba(255,255,255,0.95)" }}>
                 <Building2 className="w-8 h-8" style={{ color: cs.iconBg }} />
               </div>
@@ -254,7 +254,7 @@ function CaseStudyCard({ cs, delay = 0 }) {
         </div>
 
         {/* Content bottom */}
-        <div className="flex flex-col flex-1 p-8">
+        <div className="flex flex-col flex-1 p-5 sm:p-8">
           <div className="flex items-start justify-between gap-3 mb-4">
             <p className="text-sm text-muted-foreground font-semibold">{cs.company}</p>
             <span
@@ -294,10 +294,10 @@ export default function Services() {
       <section className="min-h-[45vh] flex items-center relative overflow-hidden bg-secondary">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/10 rounded-full blur-[80px] pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 py-20 relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-6 py-14 sm:py-20 relative z-10 w-full">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             <p className="text-sm text-secondary-foreground/40 uppercase tracking-widest mb-4">What I build</p>
-            <h1 className="text-5xl sm:text-6xl font-bold text-secondary-foreground mb-6 max-w-2xl leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-foreground mb-6 max-w-2xl leading-tight">
               Every service, scoped and{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient-x">
                 delivered by one engineer.
@@ -311,11 +311,11 @@ export default function Services() {
       </section>
 
       {/* Case Studies */}
-      <section className="py-24 bg-background">
+      <section className="py-14 sm:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedElement>
             <p className="text-sm text-muted-foreground uppercase tracking-widest mb-3">Case studies</p>
-            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-14 max-w-xl leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-10 sm:mb-14 max-w-xl leading-tight">
               How I've moved the needle.
             </h2>
           </AnimatedElement>
@@ -333,7 +333,7 @@ export default function Services() {
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%270 0 256 256%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.9%27 numOctaves=%274%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/%3E%3C/svg%3E")' }} />
         <AnimatedElement>
           <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-secondary-foreground mb-4 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary-foreground mb-4 leading-tight">
               Have a project in mind?
             </h2>
             <p className="text-sm text-secondary-foreground/55 mb-8 max-w-md mx-auto">

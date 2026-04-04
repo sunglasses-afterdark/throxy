@@ -125,7 +125,7 @@ function TechAccordion() {
           >
             <button
               onClick={() => setExpanded(isOpen ? null : domain.id)}
-              className="w-full flex items-center gap-6 py-5 px-1 text-left cursor-pointer"
+              className="w-full flex items-center gap-3 sm:gap-6 py-5 px-1 text-left cursor-pointer"
             >
               {/* Numbered pill */}
               <span
@@ -170,7 +170,7 @@ function TechAccordion() {
                   transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="flex flex-wrap gap-2.5 pb-6 px-[72px]">
+                  <div className="flex flex-wrap gap-2.5 pb-6 px-4 sm:px-[72px]">
                     {domain.tools.map((tool) => (
                       <span
                         key={tool}
@@ -197,10 +197,10 @@ export default function About() {
       <section className="min-h-[50vh] flex items-center bg-secondary relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 py-20 w-full relative z-10">
+        <div className="max-w-7xl mx-auto px-6 py-14 sm:py-20 w-full relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             <p className="text-xs text-secondary-foreground/40 uppercase tracking-widest mb-4">About</p>
-            <h1 className="text-4xl sm:text-5xl font-bold text-secondary-foreground mb-6 max-w-2xl leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-secondary-foreground mb-6 max-w-2xl leading-tight">
               Alexander Blackwood.{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient-x">
                 GTM Engineer.
@@ -214,12 +214,12 @@ export default function About() {
       </section>
 
       {/* Intro */}
-      <section className="py-24 bg-background">
+      <section className="py-14 sm:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             <AnimatedElement>
               <p className="text-sm text-muted-foreground uppercase tracking-widest mb-4">The approach</p>
-              <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
                 From design to data.
               </h2>
               <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
@@ -244,7 +244,7 @@ export default function About() {
             </AnimatedElement>
 
             <AnimatedElement delay={100}>
-              <div className="space-y-3 pt-[7.5rem]">
+              <div className="space-y-3 pt-0 lg:pt-[7.5rem]">
                 {[
                   { label: "Years in RevOps & Systems", value: "14+" },
                   { label: "CRM implementations", value: "20+" },
@@ -264,11 +264,11 @@ export default function About() {
       </section>
 
       {/* Skills */}
-      <section className="py-24 bg-secondary">
+      <section className="py-14 sm:py-24 bg-secondary">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedElement>
             <p className="text-sm text-secondary-foreground/40 uppercase tracking-widest mb-3">Technical toolkit</p>
-            <h2 className="text-4xl sm:text-5xl font-bold text-secondary-foreground mb-14 max-w-xl leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-secondary-foreground mb-10 sm:mb-14 max-w-xl leading-tight">
               Tools I work with.
             </h2>
           </AnimatedElement>

@@ -46,7 +46,7 @@ function HeroSection() {
     : "/intake";
 
   return (
-    <section className="bg-background min-h-[92vh] flex flex-col justify-center relative pt-12 pb-24">
+    <section className="bg-background min-h-[92vh] flex flex-col justify-center relative pt-8 pb-16 sm:pt-12 sm:pb-24">
       <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-primary/8 rounded-full blur-[140px] pointer-events-none animate-floatA" />
       <div className="absolute -bottom-32 -left-32 w-[600px] h-[600px] bg-accent/8 rounded-full blur-[100px] pointer-events-none animate-floatB" />
       <div className="absolute inset-0 bg-[radial-gradient(circle,_hsl(var(--border))_1px,_transparent_1px)] bg-[length:32px_32px] opacity-[0.15] pointer-events-none" />
@@ -65,7 +65,7 @@ function HeroSection() {
               GTM Engineering · AI / MCP Systems
             </div>
 
-            <h1 className="text-5xl lg:text-[3.4rem] xl:text-[3.8rem] font-bold leading-[1.05] tracking-tight text-foreground mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-[3.4rem] xl:text-[3.8rem] font-bold leading-[1.1] lg:leading-[1.05] tracking-tight text-foreground mb-6">
               I redesign complex{" "}
               <span className="relative inline-block">
                 workflows
@@ -169,10 +169,10 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
-          className="mt-20 pt-8 border-t border-border/40"
+          className="mt-12 sm:mt-20 pt-8 border-t border-border/40"
         >
           <p className="text-xs text-muted-foreground font-semibold uppercase tracking-widest mb-5">Technologies & platforms</p>
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 sm:gap-x-8 sm:gap-y-3">
             {["Claude / MCP", "HubSpot", "Salesforce", "NetSuite", "n8n", "Zapier", "PostgreSQL", "Python", "Airtable", "Retool"].map((tech) => (
               <span key={tech} className="text-sm font-semibold text-foreground/30 hover:text-foreground/60 transition-colors cursor-default">{tech}</span>
             ))}
@@ -670,7 +670,7 @@ function PillarsSection() {
   };
 
   return (
-    <section ref={ref} className="py-28 bg-secondary relative overflow-hidden">
+    <section ref={ref} className="py-16 md:py-28 bg-secondary relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/8 rounded-full blur-[120px] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
 
@@ -806,7 +806,7 @@ function ServicesSection() {
   const next = () => setActive(i => Math.min(SERVICES.length - 1, i + 1));
 
   return (
-    <section className="py-28 bg-muted">
+    <section className="py-16 md:py-28 bg-muted">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedElement>
           <p className="text-xs text-muted-foreground uppercase tracking-widest mb-5">Problems I solve every week</p>
@@ -876,7 +876,7 @@ function ServicesSection() {
             {/* Content */}
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Left: text */}
-              <div className="px-8 py-10">
+              <div className="px-5 py-7 sm:px-8 sm:py-10">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={active}
@@ -911,7 +911,7 @@ function ServicesSection() {
                       );
                     })()}
 
-                    <h2 className="text-3xl font-bold text-foreground mb-5 leading-tight">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-5 leading-tight">
                       {SERVICES[active].title}
                     </h2>
                     <p className="text-base text-muted-foreground leading-relaxed mb-8">
@@ -936,9 +936,9 @@ function ServicesSection() {
                 </AnimatePresence>
               </div>
 
-              {/* Right: isometric GTM diagram — persistent, highlights shift per tab */}
+              {/* Right: isometric GTM diagram — hidden on mobile */}
               <div
-                className="flex flex-col items-center justify-center px-6 py-8 rounded-br-3xl lg:rounded-tr-3xl"
+                className="hidden sm:flex flex-col items-center justify-center px-6 py-8 rounded-br-3xl lg:rounded-tr-3xl"
                 style={{ background: "hsl(218 28% 8%)" }}
               >
                 <div className="w-full">
@@ -988,10 +988,10 @@ function WhyAlexanderSection() {
   ];
 
   return (
-    <section className="py-28 bg-muted relative overflow-hidden">
+    <section className="py-16 md:py-28 bg-muted relative overflow-hidden">
       <div className="absolute bottom-0 right-0 w-[500px] h-[400px] bg-primary/8 rounded-full blur-[120px] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <AnimatedElement>
             <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3">Why work with me</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 leading-tight">
@@ -1030,14 +1030,14 @@ function WhyAlexanderSection() {
 
 function CTASection() {
   return (
-    <section className="py-24 bg-secondary relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-secondary relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%270 0 256 256%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.9%27 numOctaves=%274%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/%3E%3C/svg%3E")' }} />
       <div className="absolute top-0 right-1/4 w-[600px] h-[300px] bg-primary/12 rounded-full blur-[120px] pointer-events-none" />
       <AnimatedElement>
         <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
           <p className="text-xs text-secondary-foreground/40 uppercase tracking-widest mb-4">Ready to start?</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-secondary-foreground mb-4 leading-tight">
-            Describe your project.<br />
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary-foreground mb-4 leading-tight">
+            Describe your project.{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient-x">
               I'll tell you if I can help.
             </span>
