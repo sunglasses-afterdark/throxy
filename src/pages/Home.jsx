@@ -93,7 +93,7 @@ function HeroSection() {
                 Start Your Project Brief
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/services" className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              <Link to="/services" className="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 See all services <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
@@ -832,13 +832,20 @@ function ServicesSection() {
           <div className="neuo rounded-3xl" style={{ background: "hsl(45 22% 98%)" }}>
 
             {/* Tab bar */}
-            <div className="px-6 border-b border-border/40 flex items-center gap-4 py-4">
+            <div className="px-4 sm:px-6 border-b border-border/40 flex items-center gap-3 py-4">
 
-              {/* Single continuous neumorphic bar — baton slides inside it */}
-              <div className="flex-1 min-w-0 neuo rounded-full overflow-hidden"
+              {/* Mobile: active title pill + counter */}
+              <div className="flex sm:hidden flex-1 items-center gap-3 min-w-0">
+                <div className="flex-1 min-w-0 neuo rounded-full px-4 py-2" style={{ background: "hsl(45 22% 95%)" }}>
+                  <span className="block truncate text-sm font-semibold text-foreground">{SERVICES[active].title}</span>
+                </div>
+                <span className="flex-shrink-0 text-xs text-muted-foreground font-mono">{active + 1}/{SERVICES.length}</span>
+              </div>
+
+              {/* Desktop: scrollable baton strip */}
+              <div className="hidden sm:block flex-1 min-w-0 neuo rounded-full overflow-hidden"
                 style={{ background: "hsl(45 22% 95%)", padding: "3px" }}>
                 <div ref={containerRef} className="relative flex overflow-x-auto scrollbar-hide pr-2">
-                  {/* Sliding baton */}
                   {baton.ready && (
                     <div
                       className="absolute inset-y-0 rounded-full bg-primary"
@@ -850,13 +857,12 @@ function ServicesSection() {
                       }}
                     />
                   )}
-                  {/* Tab labels */}
                   {SERVICES.map((s, i) => (
                     <button
                       key={i}
                       ref={el => tabRefs.current[i] = el}
                       onClick={() => setActive(i)}
-                      className="relative flex-shrink-0 px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold z-10 whitespace-nowrap"
+                      className="relative flex-shrink-0 px-5 py-2 text-sm font-semibold z-10 whitespace-nowrap"
                       style={{
                         color: active === i ? "#fff" : "hsl(var(--muted-foreground))",
                         transition: "color 280ms ease",
@@ -868,7 +874,7 @@ function ServicesSection() {
                 </div>
               </div>
 
-              {/* Arrows */}
+              {/* Arrows — both mobile and desktop */}
               <div className="flex items-center gap-2 flex-shrink-0">
                 <button
                   onClick={prev}

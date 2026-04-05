@@ -47,9 +47,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-secondary-foreground/10 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="border-t border-secondary-foreground/10 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
           <p className="text-sm text-secondary-foreground/35">© {new Date().getFullYear()} Alexander Blackwood. All rights reserved.</p>
-          <div className="flex items-center gap-5">
+          <div className="hidden sm:flex items-center gap-5">
             <a href="mailto:alexander@alexblackwood.xyz" className="text-sm text-secondary-foreground/35 hover:text-secondary-foreground/65 transition-colors">alexander@alexblackwood.xyz</a>
             <span className="text-sm text-secondary-foreground/25">Delray Beach, FL</span>
           </div>

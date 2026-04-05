@@ -255,10 +255,10 @@ function CaseStudyCard({ cs, delay = 0 }) {
 
         {/* Content bottom */}
         <div className="flex flex-col flex-1 p-5 sm:p-8">
-          <div className="flex items-start justify-between gap-3 mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1.5 sm:gap-3 mb-4">
             <p className="text-sm text-muted-foreground font-semibold">{cs.company}</p>
             <span
-              className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-sm flex-shrink-0"
+              className="self-start text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-sm flex-shrink-0"
               style={{ background: cs.tagBg, color: cs.tagColor }}
             >
               {cs.tag}
