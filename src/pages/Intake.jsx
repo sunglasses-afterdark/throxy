@@ -366,8 +366,91 @@ export default function Intake() {
   const progress = done ? 100 : Math.min((step / FIELDS.length) * 100, 100);
 
   return (
-    <div className="bg-background min-h-screen">
-      <div className="max-w-3xl mx-auto px-4 py-4 sm:py-12">
+    <>
+    {/* ── Mobile: fixed full-screen chat ── */}
+    <div className="flex sm:hidden fixed inset-0 z-40 flex-col bg-background" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+      {/* Mobile header bar */}
+      <div className="flex-shrink-0 px-4 pt-3 pb-2 border-b border-border/40">
+        <div className="flex items-center justify-between mb-1">
+          <p className="text-xs text-muted-foreground uppercase tracking-widest">Project Intake</p>
+          {step > 0 && !done && (
+            <button onClick={restart} className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <RotateCcw className="w-3 h-3" /> Start over
+            </button>
+          )}
+        </div>
+        <div className="h-1 bg-border rounded-full overflow-hidden">
+          <motion.div className="h-full bg-primary rounded-full" initial={{ width: 0 }} animate={{ width: `${progress}%` }} transition={{ duration: 0.5, ease: "easeOut" }} />
+        </div>
+        <div className="flex justify-between mt-0.5">
+          <span className="text-[10px] text-muted-foreground">{FIELDS[Math.min(step, FIELDS.length - 1)].charAt(0).toUpperCase() + FIELDS[Math.min(step, FIELDS.length - 1)].slice(1)}</span>
+          <span className="text-[10px] text-muted-foreground">{Math.round(progress)}%</span>
+        </div>
+      </div>
+
+      {/* Mobile chat messages — fills remaining space */}
+      <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide bg-secondary">
+        {initialTypes.length > 0 && <SelectionArtifact types={initialTypes} />}
+        <AnimatePresence initial={false}>
+          {messages.map((msg, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+              {msg.role === "assistant"
+                ? <AssistantMessage text={msg.text} isLatest={i === messages.length - 1 && !thinking} />
+                : <UserMessage text={msg.text} initial={msg.initial} />}
+            </motion.div>
+          ))}
+        </AnimatePresence>
+        {thinking && (
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+            <ThinkingIndicator />
+          </motion.div>
+        )}
+      </div>
+
+      {/* Mobile input — pinned to bottom */}
+      <div className="flex-shrink-0 bg-secondary border-t border-white/6 p-3">
+        {!done ? (
+          <div className="flex items-end gap-2">
+            <textarea
+              ref={inputRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder={step === FIELDS.length - 1 ? "your@email.com" : "Type your response..."}
+              rows={1}
+              disabled={thinking}
+              className="flex-1 bg-secondary-foreground/5 text-secondary-foreground placeholder-secondary-foreground/30 rounded-xl px-4 py-3 border border-secondary-foreground/10 focus:outline-none focus:border-primary/50 resize-none transition-all disabled:opacity-40"
+              style={{ minHeight: "44px", maxHeight: "100px", fontSize: "16px" }}
+              onInput={(e) => {
+                e.target.style.height = "auto";
+                e.target.style.height = Math.min(e.target.scrollHeight, 100) + "px";
+              }}
+            />
+            <button
+              onClick={sendMessage}
+              disabled={!input.trim() || thinking}
+              className="w-11 h-11 rounded-full bg-primary flex items-center justify-center flex-shrink-0 btn-neuo-primary hover:opacity-90 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              <Send className="w-4 h-4 text-primary-foreground" />
+            </button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-3">
+            <div className="w-7 h-7 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+              <Check className="w-3.5 h-3.5 text-primary" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-secondary-foreground">Brief submitted</p>
+              <p className="text-xs text-secondary-foreground/50">Alexander will respond within 24 hours</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+
+    {/* ── Desktop: original scrolling layout ── */}
+    <div className="hidden sm:block bg-background min-h-screen">
+      <div className="max-w-3xl mx-auto px-4 py-12">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -383,8 +466,8 @@ export default function Intake() {
               </button>
             )}
           </div>
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2">Tell me about your project.</h1>
-          <p className="text-sm text-muted-foreground hidden sm:block">Takes 2 minutes. Alexander reviews every brief personally and responds within 24 hours.</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2">Tell me about your project.</h1>
+          <p className="text-sm text-muted-foreground">Takes 2 minutes. Alexander reviews every brief personally and responds within 24 hours.</p>
 
           {/* Progress bar */}
           <div className="mt-5 h-1 bg-border rounded-full overflow-hidden">
@@ -411,7 +494,7 @@ export default function Intake() {
           {/* Chat messages */}
           <div
             ref={scrollRef}
-            className="h-[45vh] min-h-[260px] sm:h-[420px] overflow-y-auto p-4 sm:p-5 space-y-4 scrollbar-hide"
+            className="h-[420px] overflow-y-auto p-5 space-y-4 scrollbar-hide"
           >
             {/* Selection artifact — shown once at top if types were pre-selected */}
             {initialTypes.length > 0 && (
@@ -519,5 +602,6 @@ export default function Intake() {
         )}
       </div>
     </div>
+    </>
   );
 }

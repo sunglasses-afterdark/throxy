@@ -836,7 +836,7 @@ function ServicesSection() {
               {/* Single continuous neumorphic bar — baton slides inside it */}
               <div className="flex-1 min-w-0 neuo rounded-full overflow-hidden"
                 style={{ background: "hsl(45 22% 95%)", padding: "3px" }}>
-                <div ref={containerRef} className="relative flex overflow-x-auto scrollbar-hide">
+                <div ref={containerRef} className="relative flex overflow-x-auto scrollbar-hide pr-2">
                   {/* Sliding baton */}
                   {baton.ready && (
                     <div
@@ -855,7 +855,7 @@ function ServicesSection() {
                       key={i}
                       ref={el => tabRefs.current[i] = el}
                       onClick={() => setActive(i)}
-                      className="relative flex-shrink-0 px-5 py-2 text-sm font-semibold z-10 whitespace-nowrap"
+                      className="relative flex-shrink-0 px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold z-10 whitespace-nowrap"
                       style={{
                         color: active === i ? "#fff" : "hsl(var(--muted-foreground))",
                         transition: "color 280ms ease",
