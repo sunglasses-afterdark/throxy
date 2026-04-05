@@ -582,12 +582,13 @@ function PillarsSection() {
       litPills(2, s2);
     };
 
-    const CYCLE = 650 + LD * 2 + 120 * 2 + 620 + 120 + 520 + 2000;
+    const CYCLE = 650 + LD * 2 + 120 * 2 + 620 + 120 + 520 + 2800;
 
     const loop = () => {
       setStep(-1);
       setLinePct([0, 0]);
       setPillRow([0, 0, 0]);
+      setScrambleKey(k => k + 1); // remount ScrambleText so hasScrambled resets each cycle
       rafRef.current.forEach(cancelAnimationFrame);
       rafRef.current = [];
       play(350);
