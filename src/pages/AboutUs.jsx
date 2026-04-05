@@ -233,12 +233,12 @@ export default function About() {
                   I've done this at companies from early-stage startups to enterprise — in healthcare, mortgage lending, SaaS, and professional services. The problems look different on the surface. At the foundation, they're usually the same: data that doesn't flow, workflows that depend on the right person being available, systems that don't talk to each other.
                 </p>
               </div>
-              <div className="mt-8 flex items-center gap-4">
-                <Link to="/intake" className="inline-flex items-center gap-2 bg-foreground text-background text-sm font-semibold px-6 py-3 rounded-full btn-neuo hover:bg-foreground/90 transition-all hover:-translate-y-0.5">
+              <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+                <Link to="/intake" className="inline-flex items-center justify-center gap-2 bg-foreground text-background text-sm font-semibold px-6 py-3 rounded-full btn-neuo hover:bg-foreground/90 transition-all hover:-translate-y-0.5">
                   Start a project <ArrowRight className="w-4 h-4" />
                 </Link>
-                <a href="mailto:alexander@alexblackwood.xyz" className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  alexander@alexblackwood.xyz <ArrowUpRight className="w-3.5 h-3.5" />
+                <a href="mailto:alexander@alexblackwood.xyz" className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors truncate">
+                  alexander@alexblackwood.xyz <ArrowUpRight className="w-3.5 h-3.5 flex-shrink-0" />
                 </a>
               </div>
             </AnimatedElement>
@@ -252,9 +252,9 @@ export default function About() {
                   { label: "Education", value: "B.A. Linguistics, Swarthmore College" },
                   { label: "Engagement model", value: "Month-to-month, no lock-in" },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center justify-between py-3.5 border-b border-border/50 last:border-0">
-                    <span className="text-sm text-muted-foreground">{item.label}</span>
-                    <span className="text-sm font-semibold text-foreground">{item.value}</span>
+                  <div key={i} className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3 sm:py-3.5 border-b border-border/50 last:border-0 gap-0.5 sm:gap-3">
+                    <span className="text-xs sm:text-sm text-muted-foreground flex-shrink-0">{item.label}</span>
+                    <span className="text-sm font-semibold text-foreground sm:text-right">{item.value}</span>
                   </div>
                 ))}
               </div>
