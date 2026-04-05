@@ -15,7 +15,7 @@ export default function Header() {
         <div className="neuo-nav rounded-full px-4 py-2 flex items-center justify-between gap-6">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 flex-shrink-0 group">
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })} className="flex items-center gap-2.5 flex-shrink-0 group">
             <div className="w-8 h-8 flex items-end justify-center overflow-hidden transition-all duration-300">
               <img src="/avatar.png" alt="Alexander Blackwood" className="w-full h-full object-contain object-bottom" />
             </div>
@@ -30,7 +30,7 @@ export default function Header() {
               to="/services"
               className="neuo-sm rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
             >
-              Services
+              Case Studies
             </Link>
             <Link
               to="/about"
@@ -65,7 +65,7 @@ export default function Header() {
               <SheetContent side="right" className="bg-background border-l border-border w-[300px]">
                 <nav className="flex flex-col gap-5 mt-12">
                   <Link to="/" onClick={closeMenu} className="text-lg font-medium text-foreground hover:text-primary transition-colors">Home</Link>
-                  <Link to="/services" onClick={closeMenu} className="text-lg font-medium text-foreground hover:text-primary transition-colors">Services</Link>
+                  <Link to="/services" onClick={closeMenu} className="text-lg font-medium text-foreground hover:text-primary transition-colors">Case Studies</Link>
                   <Link to="/about" onClick={closeMenu} className="text-lg font-medium text-foreground hover:text-primary transition-colors">About</Link>
                   <a href="mailto:alexander@alexblackwood.xyz" onClick={closeMenu} className="text-lg font-medium text-foreground hover:text-primary transition-colors">Contact</a>
                   <div className="h-px bg-border my-2" />
