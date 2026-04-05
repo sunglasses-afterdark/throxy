@@ -109,8 +109,8 @@ function HeroSection() {
             <div className="bg-card rounded-xl p-6 shadow-2xl border border-white/5 hover:shadow-primary/10 transition-all duration-700">
               <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/8">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-6 h-6 rounded-sm bg-primary/20 flex items-center justify-center">
-                    <span className="text-primary-foreground font-black text-xs leading-none" style={{ fontFamily: "'PP Neue Montreal Arabic Medium', system-ui, sans-serif" }}>A</span>
+                  <div className="w-7 h-7 rounded-sm bg-secondary flex items-end justify-center overflow-hidden flex-shrink-0">
+                    <img src="/avatar.png" alt="Alexander" className="w-full h-full object-contain object-bottom" />
                   </div>
                   <span className="text-xs font-semibold text-card-foreground/60">Alexander — Project Intake</span>
                 </div>
