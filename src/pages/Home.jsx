@@ -60,11 +60,6 @@ function HeroSection() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-xl"
           >
-            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-foreground text-xs px-3 py-1.5 rounded-sm mb-8 font-semibold tracking-wide">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-dot" />
-              GTM Engineering · AI / MCP Systems
-            </div>
-
             <h1 className="text-3xl sm:text-4xl lg:text-[3.4rem] xl:text-[3.8rem] font-bold leading-[1.1] lg:leading-[1.05] tracking-tight text-foreground mb-6">
               I redesign complex{" "}
               <span className="relative inline-block">
