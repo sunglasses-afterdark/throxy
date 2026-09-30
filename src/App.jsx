@@ -10,7 +10,12 @@ import Home from './pages/Home';
 import Solutions from './pages/Solutions';
 import AboutUs from './pages/AboutUs';
 import Intake from './pages/Intake';
+import Hire from './pages/Hire';
 import Layout from './components/Layout';
+
+// hire.alexblackwood.xyz serves the recruiter deck for every path; the main
+// site also exposes it at /hire for local preview.
+const IS_HIRE_HOST = /^hire\./i.test(window.location.hostname);
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -39,10 +44,19 @@ const AuthenticatedApp = () => {
     }
   }
 
+  if (IS_HIRE_HOST) {
+    return (
+      <Routes>
+        <Route path="*" element={<Hire />} />
+      </Routes>
+    );
+  }
+
   return (
     <>
       <ScrollToTop />
     <Routes>
+      <Route path="/hire" element={<Hire />} />
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Solutions />} />
