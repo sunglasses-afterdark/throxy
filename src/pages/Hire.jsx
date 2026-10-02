@@ -316,7 +316,12 @@ function WorkCard({ w }) {
       </div>
 
       <p className="mt-5 sm:mt-7 text-center font-heading text-[2.75rem] sm:text-6xl font-bold tracking-[-0.04em] leading-none text-foreground">
-        {active.years}
+        {active.years.split("–").map((part, i) => (
+          <span key={i}>
+            {i > 0 && <span className="mx-[0.14em] text-foreground/35 font-normal">–</span>}
+            {part}
+          </span>
+        ))}
       </p>
       <p className="mt-3 text-center text-[11px] uppercase tracking-[0.18em] text-foreground/40">
         {w.company} · {w.tag}
