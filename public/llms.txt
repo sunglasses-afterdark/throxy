@@ -1,0 +1,21 @@
+# Alexander Blackwood
+
+> GTM engineer and revenue operations architect based in Delray Beach, Florida. 14+ years building the CRM, integration, automation, and AI systems that go-to-market teams run on — HubSpot, Salesforce, NetSuite, n8n, PostgreSQL, and Claude/MCP agents. Works as a solo senior engineer: the person you talk to is the person who builds it. Month-to-month, no lock-in.
+
+Alexander sits at the intersection of business process, data systems, and AI. The work follows three pillars: redesign workflows around AI and automation, build the systems that execute them, then operate those systems in production ("Workflow Redesign → System Construction → Command & Control").
+
+Service lines: AI solutions (LLM features and MCP-connected agents), data integration (HubSpot ↔ NetSuite, Salesforce ↔ marketing automation), workflow automation, custom internal software, data architecture, and fractional CTO engagements.
+
+Contact: alexander@alexblackwood.xyz · LinkedIn: https://www.linkedin.com/in/rebel-spirit
+
+## Pages
+
+- [Home](https://alexblackwood.xyz/): positioning, the three pillars, services overview
+- [Case studies & services](https://alexblackwood.xyz/services): six service lines with examples and tools; case studies from Modus Create, NFM Lending, Particle Theory Labs, and Chrysalis Institute
+- [About](https://alexblackwood.xyz/about): background, technical toolkit, experience
+- [Hire](https://hire.alexblackwood.xyz/): resume, selected work, and an AI-replica interview for recruiters
+- [Resume (PDF)](https://alexblackwood.xyz/Alexander_Blackwood_Resume.pdf)
+
+## Optional
+
+- [Full text](https://alexblackwood.xyz/llms-full.txt): everything above in one file, including case-study detail and the experience timeline

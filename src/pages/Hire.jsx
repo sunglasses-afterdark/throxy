@@ -475,8 +475,9 @@ const T = { duration: 0.42, ease: [0.16, 1, 0.3, 1] };
 /* ── page ─────────────────────────────────────────────────────────────────── */
 
 export default function Hire() {
-  const initial = Math.max(0, SLIDES.findIndex((s) => `#${s.id}` === window.location.hash));
-  const [index, setIndex] = useState(initial);
+  // Always start at 0 for render parity with the prerendered HTML; the deep-link
+  // hash is applied in an effect below.
+  const [index, setIndex] = useState(0);
   const [dir, setDir] = useState(1);
   const rootRef = useRef(null);
   const lock = useRef(false);
@@ -502,8 +503,14 @@ export default function Hire() {
     setTimeout(() => { lock.current = false; }, 900);
   }, []);
 
+  // Deep link on load (declared before the replaceState effect so the hash is
+  // read before it gets rewritten).
   useEffect(() => {
-    document.title = "Hire Alexander Blackwood";
+    const i = SLIDES.findIndex((s) => `#${s.id}` === window.location.hash);
+    if (i > 0) setIndex(i);
+  }, []);
+
+  useEffect(() => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = prev; };

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Bot, Zap, Workflow, Code2, Database, Users, Check, TrendingUp, Building2 } from "lucide-react";
+import { ArrowRight, Bot, Zap, Workflow, Code2, Database, Users, Building2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const AnimatedElement = ({ children, className, delay = 0 }) => {

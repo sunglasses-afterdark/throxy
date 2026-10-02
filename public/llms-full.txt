@@ -1,0 +1,58 @@
+# Alexander Blackwood — GTM Engineer
+
+Site: https://alexblackwood.xyz · Hire: https://hire.alexblackwood.xyz · Email: alexander@alexblackwood.xyz · LinkedIn: https://www.linkedin.com/in/rebel-spirit · Location: Delray Beach, FL (remote)
+
+## Who
+
+Alexander Blackwood is a GTM (go-to-market) engineer and revenue operations architect with 14+ years in RevOps, CRM architecture, and systems engineering. He has worked across healthcare, mortgage lending, SaaS/healthtech, and professional services, from early-stage startups to enterprise. Education: B.A. Linguistics, Swarthmore College.
+
+He works as one senior engineer with no agency overhead: scoping, building, documenting, and operating the systems himself. Engagements are month-to-month with no lock-in.
+
+## What a GTM engineer does (in Alexander's practice)
+
+A GTM engineer builds and operates the technical systems a revenue team depends on: the CRM and its data model, the integrations between CRM/ERP/marketing automation/support tools, the automations that move leads and deals, the reporting that leadership runs on, and increasingly the AI agents that sit on top of all of it. The role bridges RevOps strategy and software engineering.
+
+Alexander's three pillars:
+1. Workflow Redesign — map how work actually flows (who does what, where handoffs break, what is manual that shouldn't be) and redesign it around AI and automation.
+2. System Construction — build the CRM architecture, integrations, automations, and custom tools that execute the redesigned workflow.
+3. Command & Control — operate those systems in production: monitoring, data hygiene, reporting, vendor management.
+
+## Service lines
+
+- AI Solutions — LLM-powered features and agents as production infrastructure: document extraction pipelines, intelligent routing and classification, chat-based tools, conversational project intake, and MCP-connected agents that operate across systems of record. Tools: Claude / Anthropic API, MCP (Model Context Protocol), n8n with AI nodes, Python.
+- Data Integration — bidirectional syncs, event-driven pipelines, and API connections: HubSpot ↔ NetSuite deal/invoice sync, Salesforce ↔ marketing automation lifecycle triggers, webhooks that propagate state across systems, wrapping legacy databases with clean APIs. Tools: HubSpot, Salesforce, NetSuite, n8n, Zapier, REST/GraphQL, PostgreSQL.
+- Automation — lead assignment and enrichment workflows, auto-generated revenue reporting, approval flows with audit trails, scheduled data-hygiene jobs. Tools: n8n, Zapier, HubSpot Workflows, Salesforce Flow, Python.
+- Custom Software — operations portals, revenue dashboards, Airtable/Retool apps built around the team's actual workflow. Tools: React, Airtable, Retool, Supabase, PostgreSQL, Vite, Tailwind.
+- Data Architecture — revenue data models unifying CRM/ERP/support data, warehouse design, zero-downtime schema migrations, Airtable base redesign. Tools: PostgreSQL, BigQuery, dbt, Looker, Tableau, SQL.
+- Fractional CTO — stack audits, build-vs-buy analysis, vendor evaluation, technical due diligence.
+
+## Experience
+
+### Modus Create — Senior Business Operations Analyst (Sep 2024 – present, remote)
+Owns end-to-end GTM planning (capacity, headcount, quotas, pipeline) across the revenue stack. Designed and implemented the HubSpot CRM architecture from the lead object up to improve data integrity, lifecycle management, and the buyer journey from lead to revenue. Overhauled a brittle NetSuite integration that caused duplication and outages by redesigning the underlying logic flows. Implemented lifecycle improvements with a Salesforce integration for better lead handoff, pipeline visibility, and forecasting. Manages integrations and vendor relationships for all GTM tools.
+Outcome: full GTM stack architected 0→1; NetSuite sync rebuilt with stable synchronization; complete pipeline visibility.
+
+### NFM Lending — CRM Admin (Apr 2023 – Aug 2024, Ft. Lauderdale, FL, remote)
+Led an end-to-end revenue operations transformation on HubSpot, implementing an integrated CRM ecosystem with cross-functional reporting connecting marketing, sales, and customer success.
+Outcome: +30% lead-to-customer conversion, +25% qualified pipeline, +15% marketing ROI.
+
+### Particle Theory Labs — Director of Revenue Operations & Business Systems (Mar 2020 – Mar 2023, Boca Raton, FL, remote)
+Established the company's first revenue operations framework during a rapid growth phase, including HIPAA-compliant CRM infrastructure and governance, customer-journey optimization, and automated executive reporting dashboards.
+Outcome: +40% pipeline velocity, +50% customer engagement.
+
+### Chrysalis Institute — Business Systems Administrator (Mar 2010 – Jan 2020, New York, NY)
+Oversaw operations for a provider of novel therapeutics for mood and cognition. Led a digital transformation migrating operations to a cloud platform; overhauled the CRM with personalized patient communication pathways and automated follow-up.
+Outcome: −25% operating cost, +30% patient throughput, +35% patient retention.
+
+## Technical toolkit
+
+- Revenue operations: GTM strategy, pipeline management, revenue forecasting, cross-functional leadership
+- CRM & platforms: HubSpot (architect + admin), Salesforce (architect + admin), NetSuite, 6Sense, Gong, Pipedrive
+- AI & automation: Claude / Anthropic API, Codex, MCP agents, LangGraph, CrewAI, AutoGen, n8n, Zapier, Relevance AI, Storybook
+- Analytics & BI: Looker, Tableau, Google Analytics, SQL, BigQuery, Metabase
+- Development: Python, SQL, Ruby, Java, React, TypeScript, Supabase, PostgreSQL
+- Marketing tech: Google Ads, LinkedIn Ads, lifecycle programs, Clay, Apollo
+
+## Hiring
+
+Open to full-time and contract roles. Recruiters can review the resume and selected work at https://hire.alexblackwood.xyz and request (or, once live, launch) an AI-replica screening interview from the same page. Resume PDF: https://alexblackwood.xyz/Alexander_Blackwood_Resume.pdf
