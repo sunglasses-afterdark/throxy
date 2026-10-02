@@ -63,6 +63,19 @@ const RESUME = {
   ],
 };
 
+// Career timeline — decimal years. Every work slide draws the full span so the
+// active tenure reads in context; each employer keeps its own colour across slides.
+const CAREER_START = 2010 + 2 / 12; // mar 2010
+const _now = new Date();
+const CAREER_END = _now.getFullYear() + _now.getMonth() / 12;
+const TENURES = [
+  { id: "chrysalis", from: 2010 + 2 / 12, to: 2020 + 0 / 12, years: "2010–20", color: "hsl(12 75% 48%)" },
+  { id: "ptl", from: 2020 + 2 / 12, to: 2023 + 2 / 12, years: "2020–23", color: "hsl(255 65% 52%)" },
+  { id: "nfm", from: 2023 + 3 / 12, to: 2024 + 7 / 12, years: "2023–24", color: "hsl(168 68% 38%)" },
+  { id: "modus", from: 2024 + 8 / 12, to: CAREER_END, years: "2024–now", color: "hsl(225 78% 55%)" },
+];
+const pct = (v) => ((v - CAREER_START) / (CAREER_END - CAREER_START)) * 100;
+
 const WORK = [
   {
     id: "modus",
@@ -72,8 +85,6 @@ const WORK = [
     company: "Modus Create",
     period: "2024–present",
     tag: "Professional Services",
-    accentFrom: "hsl(225 60% 93%)",
-    accentTo: "hsl(225 60% 98%)",
     accent: "hsl(225 78% 55%)",
     headline: "0→1",
     headlineSuffix: "full GTM stack architected",
@@ -90,8 +101,6 @@ const WORK = [
     company: "NFM Lending",
     period: "2023–2024",
     tag: "Mortgage Lending",
-    accentFrom: "hsl(168 55% 90%)",
-    accentTo: "hsl(168 55% 97%)",
     accent: "hsl(168 68% 38%)",
     headline: "30%",
     headlineSuffix: "lift in lead-to-customer conversion",
@@ -108,8 +117,6 @@ const WORK = [
     company: "Particle Theory Labs",
     period: "2020–2023",
     tag: "SaaS / HealthTech",
-    accentFrom: "hsl(255 55% 93%)",
-    accentTo: "hsl(255 55% 98%)",
     accent: "hsl(255 65% 52%)",
     headline: "40%",
     headlineSuffix: "increase in pipeline velocity",
@@ -117,6 +124,22 @@ const WORK = [
       "Built the company's first revenue operations framework from scratch — HIPAA-compliant CRM governance, automated executive reporting, and lifecycle management across a 3-year engagement.",
     focus: ["RevOps framework", "HIPAA-compliant CRM", "Executive reporting"],
     impact: ["+40% pipeline velocity", "+50% customer engagement", "0→1 RevOps function"],
+  },
+  {
+    id: "chrysalis",
+    label: "Chrysalis",
+    sub: "35% retention lift",
+    role: "business systems administrator",
+    company: "Chrysalis Institute",
+    period: "2010–2020",
+    tag: "Healthcare",
+    accent: "hsl(12 75% 48%)",
+    headline: "35%",
+    headlineSuffix: "increase in patient retention",
+    description:
+      "Led a full digital transformation — cloud migration, CRM overhaul with personalised communication pathways, and lifecycle marketing programs. Reduced operational costs and meaningfully improved patient outcomes.",
+    focus: ["Cloud migration", "CRM overhaul", "Lifecycle marketing"],
+    impact: ["+35% patient retention", "+30% patient throughput", "−25% operating cost"],
   },
 ];
 
@@ -227,20 +250,77 @@ function ResumeMeta() {
 /* ── slide: work ──────────────────────────────────────────────────────────── */
 
 function WorkCard({ w }) {
+  const active = TENURES.find((t) => t.id === w.id);
+  const center = (pct(active.from) + pct(active.to)) / 2;
+  const ticks = [...new Set(TENURES.flatMap((t) => [t.from, t.to]))];
+  const Brace = ({ children }) => (
+    <span className="font-heading font-light leading-none text-foreground/80 select-none text-[3.75rem] sm:text-[5.5rem] -translate-y-[0.06em]">{children}</span>
+  );
+
   return (
-    <div
-      className="w-full max-w-[560px] mx-auto rounded-sm neuo bg-white overflow-hidden"
-    >
-      <div className="px-8 pt-10 pb-8 sm:px-12 sm:pt-14 sm:pb-12" style={{ background: `linear-gradient(160deg, ${w.accentFrom}, ${w.accentTo})` }}>
-        <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.16em] px-2.5 py-1 rounded-sm bg-white/70" style={{ color: w.accent }}>{w.tag}</span>
-        <p className="mt-8 text-6xl sm:text-7xl font-bold tracking-tight text-foreground leading-none">{w.headline}</p>
-        <p className="mt-3 text-base sm:text-lg text-foreground/65 max-w-xs leading-snug">{w.headlineSuffix}</p>
+    <div className="w-full max-w-[640px] mx-auto rounded-2xl bg-muted/70 px-5 sm:px-10 pt-[7.5rem] sm:pt-36 pb-9 sm:pb-12">
+      <div className="flex items-center gap-2 sm:gap-4">
+        <Brace>{"{"}</Brace>
+
+        {/* timeline */}
+        <div className="relative flex-1 h-14 sm:h-20 bg-foreground/[0.07]">
+          {/* floating metric above the active tenure */}
+          <motion.div
+            initial={{ opacity: 0, y: 10, x: "-50%" }}
+            animate={{ opacity: 1, y: 0, x: "-50%" }}
+            transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute bottom-full mb-7 sm:mb-9 w-[168px] sm:w-[220px] bg-white rounded-md px-3.5 py-3 sm:px-4 sm:py-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.05),0_10px_28px_rgba(175,162,143,0.28)]"
+            style={{ left: `clamp(84px, ${center}%, calc(100% - 84px))` }}
+          >
+            <p className="font-heading text-[1.9rem] sm:text-[2.4rem] font-bold tracking-tight leading-none" style={{ color: active.color }}>{w.headline}</p>
+            <p className="text-[11px] sm:text-[12px] text-foreground/60 mt-1.5 leading-snug">{w.headlineSuffix}</p>
+          </motion.div>
+
+          {/* tenures */}
+          {TENURES.map((t, i) => {
+            const isActive = t.id === w.id;
+            return (
+              <motion.div
+                key={t.id}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.7, delay: 0.06 * i, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-y-0"
+                style={{
+                  left: `${pct(t.from)}%`,
+                  width: `${pct(t.to) - pct(t.from)}%`,
+                  background: t.color,
+                  opacity: isActive ? 1 : 0.16,
+                  transformOrigin: "left",
+                }}
+              />
+            );
+          })}
+
+          {/* boundary ticks */}
+          {ticks.map((v) => (
+            <span key={v} className="absolute -top-1.5 -bottom-1.5 w-px bg-foreground/30" style={{ left: `${pct(v)}%` }} />
+          ))}
+
+          {/* marker line from metric down through the bar */}
+          <motion.span
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1 }}
+            transition={{ delay: 0.5, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute w-px -top-7 sm:-top-9 bottom-0 origin-top"
+            style={{ left: `${center}%`, background: active.color }}
+          />
+        </div>
+
+        <Brace>{"}"}</Brace>
       </div>
-      <div className="grid grid-cols-3 divide-x divide-border/60 border-t border-border/60">
-        {w.impact.map((s) => (
-          <div key={s} className="px-4 py-4 text-[12px] leading-snug text-foreground/70">{s}</div>
-        ))}
-      </div>
+
+      <p className="mt-5 sm:mt-7 text-center font-heading text-[2.75rem] sm:text-6xl font-bold tracking-[-0.04em] leading-none text-foreground">
+        {active.years}
+      </p>
+      <p className="mt-3 text-center text-[11px] uppercase tracking-[0.18em] text-foreground/40">
+        {w.company} · {w.tag}
+      </p>
     </div>
   );
 }
